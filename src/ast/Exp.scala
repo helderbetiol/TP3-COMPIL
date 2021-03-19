@@ -104,6 +104,6 @@ case class CondExp(e1: Exp, e2: Exp, e3: Exp) extends Exp {
   override def gen(): String = {
     // test text first
     val test = e1.gen()
-    ""
+    test+" if (result i32) "+e2.gen()+" else "+e3.gen()+" end"
   }
 }
