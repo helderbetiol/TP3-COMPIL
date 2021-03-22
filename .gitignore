@@ -1,0 +1,8 @@
+.DS_Store/
+.idea/codeStyles/codeStyleConfig.xml
+*.swp
+*.txt
+*.wat
+*.wasm
+*.class
+
