@@ -90,7 +90,14 @@ case class FunCall(funId: FunId, exps: List[Exp]) extends Exp {
     sf(funId.value).eval(args.toList, sf)
   }
 
-  override def gen(): String = ???
+  override def gen(): String = {
+    var res = "";
+    for(e <- exps){
+      res += e.gen() + "\n"
+    }
+    res += "call $"+funId.value
+    res
+  }
 }
 case class CondExp(e1: Exp, e2: Exp, e3: Exp) extends Exp {
   override def eval(s: State[Int], sf:State[FunDef]): Int = {

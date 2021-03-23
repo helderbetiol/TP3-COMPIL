@@ -12,8 +12,13 @@ case class Program(listFunDef: List[FunDef], body: Body) extends AST{
   }
 
   override def gen(): String = {
+    var funs = ""
+    for ( f <- listFunDef){
+      funs += f.gen() + "\n"
+    }
     s"""
       |(module
+      |  ${funs}
       |  (func (export "main") (result i32)
       |    ${body.gen()}
       |    return

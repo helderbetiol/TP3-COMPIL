@@ -13,5 +13,11 @@ case class FunDef(head: Head, body: Body) extends AST {
     body.eval(stateInt, stFun)
   }
 
-  override def gen(): String = ???
+  override def gen(): String = {
+    var res = "("
+    res += head.gen()
+    res += body.gen()
+    res += ")"
+    res
+  }
 }
