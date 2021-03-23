@@ -84,8 +84,14 @@ trait CTest {
             println("wat code does not compile")
           }
         } else {
-          println("FAILURE on " + fileName)
-          println("wat code does not compile")
+          expectation match {
+            case None =>
+              println("SUCCESS on " + fileName)
+              success += 1
+            case _ =>
+              println("FAILURE on " + fileName)
+              println("wat code does not compile")
+          }
         }
       }
       else { // no wat code produced

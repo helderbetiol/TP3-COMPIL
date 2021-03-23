@@ -12,7 +12,14 @@ case class Program(listFunDef: List[FunDef], body: Body) extends AST{
   }
 
   override def gen(): String = {
-    "(module (func (export \"main\") (result i32)\n    "+body.exp.gen()+"\n    return)\n    )"
+    s"""
+      |(module
+      |  (func (export "main") (result i32)
+      |    ${body.gen()}
+      |    return
+      |  )
+      |)
+    |""".stripMargin
   }
 }
 

@@ -38,7 +38,7 @@ case class IntLit(value: Int) extends Exp {
 case class VarId(value: String) extends Exp {
   override def eval(s: State[Int], sf:State[FunDef]): Int = s(value)
 
-  override def gen(): String = ???
+  override def gen(): String = "get_local $" +value
 }
 case class FunId(value: String) extends Exp {
   override def eval(s: State[Int], sf:State[FunDef]): Int = {
